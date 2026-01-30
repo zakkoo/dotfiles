@@ -54,6 +54,8 @@ brew install font-hack-nerd-font
 brew install powerlevel10k
 ```
 
+**Note:** TPM (Tmux Plugin Manager) is automatically installed by the install script.
+
 ### Optional
 
 ```bash
@@ -109,6 +111,11 @@ ls -la ~/.zshrc
 - Zsh: Run `source ~/.zshrc` or restart terminal
 - Tmux: Run `tmux source-file ~/.tmux.conf`
 - Neovim: Restart or run `:source $MYVIMRC`
+
+**Tmux plugins not working?**
+- Start tmux: `tmux`
+- Press `prefix + I` (capital I) to install plugins
+- Plugins are managed by TPM (Tmux Plugin Manager)
 
 ## Previous Repositories
 
