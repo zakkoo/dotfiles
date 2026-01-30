@@ -1,3 +1,6 @@
+# ============================================================================
+# POWERLEVEL10K INSTANT PROMPT
+# ============================================================================
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -5,38 +8,62 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# ============================================================================
+# PATH CONFIGURATION
+# ============================================================================
+# Add Homebrew to PATH
 export PATH="/opt/homebrew/bin:$PATH"
+
+# ============================================================================
+# NVM (NODE VERSION MANAGER)
+# ============================================================================
 export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# Load nvm
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+# Load nvm bash completion
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
-
-alias ls='ls -A'
-
-
+# ============================================================================
+# ZSH PLUGINS
+# ============================================================================
+# Powerlevel10k theme
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+# Autosuggestions - suggest commands as you type
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# Syntax highlighting - highlight commands as you type
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-
-# ---- Eza (better ls) -----
-
-alias ls="eza --icons=always"
-
-# zoxide
+# ============================================================================
+# ALIASES
+# ============================================================================
+# Use eza instead of ls for better file listing with icons
+alias ls="eza --icons=always --all"
+# Use zoxide instead of cd for smart directory jumping
 alias cd="z"
+
+# ============================================================================
+# ZOXIDE (SMART CD)
+# ============================================================================
+# Initialize zoxide - a smarter cd command that learns your habits
 eval "$(zoxide init zsh)"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# ============================================================================
+# POWERLEVEL10K CONFIGURATION
+# ============================================================================
+# Load Powerlevel10k config (run `p10k configure` to customize)
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# history setup
-HISTFILE=$HOME/.zhistory
-SAVEHIST=1000
-HISTSIZE=999
-setopt share_history
-setopt hist_expire_dups_first
-setopt hist_ignore_dups
-setopt hist_verify
-bindkey "^[[A" history-search-backward
-bindkey "^[[B" history-search-forward
+# ============================================================================
+# HISTORY CONFIGURATION
+# ============================================================================
+HISTFILE=$HOME/.zhistory       # Where to save history
+SAVEHIST=1000                  # Number of commands to save
+HISTSIZE=999                   # Number of commands to load in memory
+setopt share_history           # Share history between all sessions
+setopt hist_expire_dups_first  # Expire duplicate entries first
+setopt hist_ignore_dups        # Don't record duplicate consecutive commands
+setopt hist_verify             # Show command with history expansion before running
+
+# History search with arrow keys
+bindkey "^[[A" history-search-backward  # Up arrow
+bindkey "^[[B" history-search-forward   # Down arrow
