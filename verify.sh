@@ -20,7 +20,7 @@ echo
 
 # Check fonts
 echo "Checking fonts..."
-fc-list | grep -q "Hack Nerd Font" && echo "✓ Hack Nerd Font installed" || echo "✗ Hack Nerd Font not found"
+[ -f ~/Library/Fonts/HackNerdFont-Regular.ttf ] || [ -f /Library/Fonts/HackNerdFont-Regular.ttf ] && echo "✓ Hack Nerd Font installed" || echo "✗ Hack Nerd Font not found"
 echo
 
 # Check Neovim version
