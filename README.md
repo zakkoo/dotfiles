@@ -67,51 +67,6 @@ cd ~/.config/alacritty/
 git clone https://github.com/alacritty/alacritty-theme.git themes
 ```
 
-## Configuration Details
-
-### Zsh
-
-- Powerlevel10k theme with custom prompt
-- History configuration (1000 entries)
-- Custom aliases
-- NVM integration
-
-**First-time setup:** Run `p10k configure` to customize your prompt
-
-### Alacritty
-
-- **Font:** Hack Nerd Font (16pt)
-- **Theme:** Flat Remix
-- **Window:** 80% opacity with blur effect
-- **Shell:** Auto-starts tmux session
-- **Keybindings:** Cmd+F sends Alt+B
-
-**Change theme:** Edit the import path in `alacritty.toml` to any theme in `themes/themes/`
-
-### Neovim
-
-See `nvim/README.md` for detailed configuration information.
-
-### Tmux
-
-Terminal multiplexer configuration with custom keybindings.
-
-## Directory Structure
-
-```
-~/.dotfiles/
-├── README.md           # This file
-├── install.sh          # Installation script
-├── zsh/
-│   └── .zshrc         # Zsh configuration
-├── alacritty/
-│   └── alacritty.toml # Terminal config
-├── tmux/
-│   └── .tmux.conf     # Tmux config
-└── nvim/              # Neovim config
-    └── ...
-```
-
 ## Updating
 
 Since configs are symlinked, just pull the latest changes:
