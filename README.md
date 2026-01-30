@@ -34,6 +34,8 @@ brew install neovim tmux
 brew install font-hack-nerd-font \
   powerlevel10k \
   ripgrep fd \
+  zsh-autosuggestions \
+  zsh-syntax-highlighting \
   nvm git
 ```
 
