@@ -1,28 +1,3 @@
-# Setup
-
-Clone repo here
-
-`~/config/tmux`
-
-Clone plugin repo
-
-```bash
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-```
-
-Create the symlink
-
-```bash
-ln -s ~/config/tmux/tmux.conf ~/.tmux.conf
-```
-
-Reload after changes
-```bash
-tmux source-file ~/.tmux.conf
-```
-
-prefix +    start every tmux command
-
 # PANES (splits)
 
 prefix + %    split pane vertically (left/right)
