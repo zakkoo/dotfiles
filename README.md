@@ -68,17 +68,7 @@ brew install dotnet
 dotnet tool install -g csharpier
 ```
 
-### Step 3: Install Node.js Global Packages
-
-```bash
-# Prettierd (faster Prettier formatter)
-npm install -g @fsouza/prettierd
-
-# Optional: Install other formatters/linters as needed
-npm install -g prettier eslint
-```
-
-### Step 4: Clone and Install Dotfiles
+### Step 3: Clone and Install Dotfiles
 
 ```bash
 # Clone this repository
@@ -99,6 +89,16 @@ The install script will:
 - Backup existing configurations (with timestamps)
 - Create symlinks to your dotfiles
 - Install TPM (Tmux Plugin Manager) automatically
+
+### Step 4: Install Node.js Global Packages
+
+```bash
+# Prettierd (faster Prettier formatter)
+npm install -g @fsouza/prettierd
+
+# Optional: Install other formatters/linters as needed
+npm install -g prettier eslint
+```
 
 ### Step 5: Post-Installation Setup
 
