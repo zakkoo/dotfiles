@@ -4,10 +4,10 @@ Personal development environment configuration for macOS.
 
 ## What's Included
 
-- **Zsh** - Shell configuration with Powerlevel10k theme
-- **Alacritty** - GPU-accelerated terminal emulator with transparent background
-- **Tmux** - Terminal multiplexer with custom keybindings and session management
-- **Neovim** - Modern text editor with LSP, DAP, and extensive plugin ecosystem
+- **Zsh** - Shell configuration
+- **Alacritty** - GPU-accelerated
+- **Tmux** - Terminal multiplexer
+- **Neovim** - Modern text editor
 
 ## Prerequisites
 
@@ -46,8 +46,8 @@ brew install powerlevel10k
 # Required for Neovim Telescope (fuzzy finder)
 brew install ripgrep fd
 
-# Node.js (required for formatters like prettierd)
-brew install node
+# Node Version Manager 
+brew install nvm
 
 # Git (required for plugin managers)
 brew install git
@@ -159,40 +159,6 @@ ln -sf ~/.dotfiles/nvim ~/.config/nvim
 ln -sf ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
 ```
 
-## Dependency Reference
-
-### Required Dependencies
-
-| Tool | Purpose | Installation |
-|------|---------|-------------|
-| Homebrew | Package manager | See Prerequisites |
-| Alacritty | Terminal emulator | `brew install --cask alacritty` |
-| Neovim | Text editor | `brew install neovim` |
-| Tmux | Terminal multiplexer | `brew install tmux` |
-| Hack Nerd Font | Icons and glyphs | `brew install font-hack-nerd-font` |
-| Powerlevel10k | Zsh theme | `brew install powerlevel10k` |
-| ripgrep | Fast search tool | `brew install ripgrep` |
-| fd | File finder | `brew install fd` |
-| Node.js | JavaScript runtime | `brew install node` |
-| Git | Version control | `brew install git` |
-
-### Neovim Tools (Auto-installed by Mason)
-
-These are automatically managed by Mason.nvim when you open Neovim:
-- Language servers (LSPs) for various languages
-- Debuggers (DAPs)
-- Formatters: prettier, eslint_d, stylelint
-- Additional tools as configured in Mason
-
-### Optional Dependencies
-
-| Tool | Purpose | Installation |
-|------|---------|-------------|
-| .NET SDK | C# development | `brew install dotnet` |
-| csharpier | C# formatter | `dotnet tool install -g csharpier` |
-| prettierd | Fast formatter | `npm install -g @fsouza/prettierd` |
-| fourmolu | Haskell formatter | `cabal install fourmolu` |
-
 ## Updating
 
 Since configs are symlinked, just pull the latest changes:
@@ -235,129 +201,6 @@ node --version
 npm --version
 ```
 
-## Configuration Details
-
-### Alacritty
-- **Font**: Hack Nerd Font (16pt)
-- **Opacity**: 80% with background blur (macOS)
-- **Theme**: Marine Dark (customizable)
-- **Auto-start**: Automatically launches tmux session
-- **Shell**: Zsh with Powerlevel10k
-
-### Tmux
-- **Prefix**: `Alt-b` (Option-b on Mac, not the default Ctrl-b)
-- **Navigation**: Vim-style keys (h/j/k/l)
-- **Mouse**: Enabled for pane selection and resizing
-- **Plugins**: TPM, tmux-sensible, tmux-resurrect, tmux-continuum
-- **Status Bar**: Custom with git branch indicator
-
-### Neovim
-- **Plugin Manager**: lazy.nvim
-- **LSP**: Mason.nvim for language servers
-- **Completion**: nvim-cmp with snippets
-- **Debugging**: nvim-dap with UI
-- **File Explorer**: nvim-tree
-- **Fuzzy Finder**: Telescope
-- **Theme**: Tokyo Night
-
-## Troubleshooting
-
-### Symlinks not working?
-
-```bash
-# Check if symlink exists
-ls -la ~/.zshrc
-
-# Should show: ~/.zshrc -> /Users/your-username/.dotfiles/zsh/.zshrc
-
-# If broken, recreate manually
-ln -sf ~/.dotfiles/zsh/.zshrc ~/.zshrc
-```
-
-### Alacritty not launching?
-
-```bash
-# Check if installed correctly
-brew list alacritty
-
-# Reinstall if needed
-brew reinstall --cask alacritty
-
-# Check config syntax
-alacritty --print-events
-```
-
-### Neovim plugins not loading?
-
-```bash
-# Launch Neovim and check lazy.nvim
-nvim
-
-# Inside Neovim, run:
-:Lazy
-
-# To reinstall all plugins:
-:Lazy sync
-
-# Check for errors:
-:checkhealth
-```
-
-### Tmux plugins not installing?
-
-```bash
-# Check if TPM is installed
-ls -la ~/.config/tmux/plugins/tpm
-
-# If not, install manually
-git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
-
-# Start tmux and install plugins
-tmux
-# Then press: Alt-b + I (that's Alt-b followed by Shift+i)
-```
-
-### Fonts not displaying correctly?
-
-```bash
-# Verify Nerd Font is installed
-brew list --cask | grep nerd-font
-
-# Reinstall if needed
-brew reinstall font-hack-nerd-font
-
-# Make sure Alacritty is using the correct font
-# Check alacritty.toml has: font.normal.family = "Hack Nerd Font"
-```
-
-### Telescope (Neovim fuzzy finder) not working?
-
-```bash
-# Make sure ripgrep and fd are installed
-which rg   # Should show ripgrep path
-which fd   # Should show fd path
-
-# Install if missing
-brew install ripgrep fd
-```
-
-### Formatters/Linters not working in Neovim?
-
-```bash
-# Check if Node.js is installed
-node --version
-
-# Install prettierd globally
-npm install -g @fsouza/prettierd
-
-# For C# support, install csharpier
-dotnet tool install -g csharpier
-
-# Inside Neovim, check Mason
-:Mason
-# Install any missing tools from the Mason UI
-```
-
 ## Adding New Configs
 
 1. Create a new directory: `mkdir ~/.dotfiles/tool-name`
@@ -392,18 +235,3 @@ mv ~/.zshrc.backup.YYYYMMDD_HHMMSS ~/.zshrc
 # Optionally remove the dotfiles directory
 rm -rf ~/.dotfiles
 ```
-
-## Previous Repositories
-
-This unified dotfiles repository replaces the following separate config repos:
-- [`mynvim`](https://github.com/zakkoo/mynvim) → Now in `~/.dotfiles/nvim/`
-- [`myalacritty`](https://github.com/zakkoo/myalacritty) → Now in `~/.dotfiles/alacritty/`
-- [`mytmux`](https://github.com/zakkoo/mytmux) → Now in `~/.dotfiles/tmux/`
-
-## Contributing
-
-Found an issue or have a suggestion? Feel free to open an issue or pull request!
-
-## License
-
-Personal configuration - feel free to use and modify as needed.
