@@ -1,0 +1,31 @@
+# Backup files created by install script
+*.backup.*
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# Sensitive data (if any)
+*secret*
+*private*
+.env
+
+# Alacritty themes (cloned separately)
+alacritty/themes/
+
+# Zsh
+zsh/.zcompdump*
+zsh/.zsh_history
+
+# Neovim
+nvim/plugin/
+nvim/.netrwhist
+nvim/lazy-lock.json

@@ -1,0 +1,53 @@
+# Alacritty Configuration
+# https://alacritty.org/config-alacritty.html
+
+# ============================================================================
+# Environment Variables
+# ============================================================================
+[env]
+TERM = "xterm-256color"  # Enable full color support
+
+# ============================================================================
+# General Settings
+# ============================================================================
+[general]
+# Automatically reload config when modified
+live_config_reload = true
+
+import = [
+    "~/.config/alacritty/themes/themes/marine_dark.toml"
+]
+
+# ============================================================================
+# Font Configuration
+# ============================================================================
+[font]
+normal.family = "Hack Nerd Font"  # Nerd Font for icons/glyphs
+size = 16.0                        # Font size in points
+
+# ============================================================================
+# Window Appearance
+# ============================================================================
+[window]
+opacity = 0.8   # 80% opacity (0.0 fully transparent, 1.0 fully opaque)
+blur = true     # Blur background behind window (macOS only)
+
+# Padding around terminal content (in pixels)
+padding.x = 10
+padding.y = 10
+
+# ============================================================================
+# Shell Integration
+# ============================================================================
+[terminal.shell]
+program = "/bin/zsh"
+# Auto-attach to tmux session, or create new one if none exists
+args = ["-l", "-c", "tmux attach || tmux new"]
+
+# ============================================================================
+# Custom Keybindings
+# ============================================================================
+[[keyboard.bindings]]
+key = "F"
+mods = "Command"
+chars = "\u001bb"  # Cmd+F sends Alt+b
