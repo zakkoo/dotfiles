@@ -3,33 +3,6 @@
 ## What it is
 A structured Neovim configuration built around **lazy.nvim** with a focused plugin set, language tooling for C#, JS/TS, HTML/CSS, and a debugging setup via nvim-dap. Everything is separated into small Lua modules so you can adjust pieces without touching unrelated parts.
 
-## Requirements (macOS)
-
-```bash
-brew install ripgrep fd
-```
-
-```bash
-dotnet tool install -g csharpier
-```
-
-```bash
-npm i -g @fsouza/prettierd
-```
-
-Only if you need Haskell formatting options:
-```bash
-cabal install fourmolu
-```
-
-## How to use it
-1. Copy this repo into your Neovim config location:
-   - macOS/Linux: `~/.config/nvim`
-2. Start Neovim and let `lazy.nvim` install plugins.
-3. Open a project (C#, JS/TS, HTML/CSS) and use:
-   - `:Mason` to confirm language servers and debug adapters are installed.
-   - `:LspInfo` to verify the LSP clients are attached.
-
 ## Configuration layout (what + where)
 
 ```
@@ -104,6 +77,3 @@ cabal install fourmolu
 - `<C-r>`: Redo.
 - `<C-f>`: Full page down.
 - `<C-b>`: Full page up.
-
-# TODO
-- kulala.nvim
