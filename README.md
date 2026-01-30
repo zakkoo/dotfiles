@@ -115,8 +115,7 @@ git clone https://github.com/alacritty/alacritty-theme.git ~/.config/alacritty/t
 #### Powerlevel10k Configuration
 
 ```bash
-# Run the configuration wizard
-p10k configure
+## todo. if i start the wizard, where will the conf go? into this repo or somewhere else?
 ```
 
 Follow the interactive prompts to customize your terminal prompt.
@@ -124,12 +123,7 @@ Follow the interactive prompts to customize your terminal prompt.
 #### Tmux Plugin Installation
 
 ```bash
-# Start tmux
-tmux
-
 # Inside tmux, press: prefix + I (that's capital i)
-# Default prefix in this config is Alt-b (Option-b on Mac)
-# So press: Alt-b then Shift+i
 ```
 
 This will install all tmux plugins defined in the configuration.
@@ -147,17 +141,6 @@ On first launch, lazy.nvim will automatically:
 - Set up Mason for LSP/DAP/formatters
 
 Wait for the installation to complete. You may need to restart Neovim after the initial setup.
-
-### Manual Symlink Creation (Alternative)
-
-If you prefer to link configs individually instead of using the install script:
-
-```bash
-ln -sf ~/.dotfiles/zsh/.zshrc ~/.zshrc
-ln -sf ~/.dotfiles/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
-ln -sf ~/.dotfiles/nvim ~/.config/nvim
-ln -sf ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
-```
 
 ## Updating
 
