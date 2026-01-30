@@ -47,15 +47,22 @@ create_symlink "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
 create_symlink "$DOTFILES_DIR/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
 
 # Tmux
-if [ -f "$DOTFILES_DIR/tmux/.tmux.conf" ]; then
+if [ -f "$DOTFILES_DIR/tmux/tmux.conf" ]; then
+    # Create ~/.config/tmux directory if it doesn't exist
+    mkdir -p "$HOME/.config/tmux"
+
+    # Create symlink for .tmux.conf in home directory
+    create_symlink "$DOTFILES_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
+
+    # Create symlink for git-branch.sh script
+    create_symlink "$DOTFILES_DIR/tmux/git-branch.sh" "$HOME/.config/tmux/git-branch.sh"
+
     # Install TPM (Tmux Plugin Manager) if not already installed
-    if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+    if [ ! -d "$HOME/.config/tmux/plugins/tpm" ]; then
         echo -e "${BLUE}Installing TPM (Tmux Plugin Manager)...${NC}"
-        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+        git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
         echo -e "${GREEN}✓${NC} TPM installed"
     fi
-
-    create_symlink "$DOTFILES_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
 
     # Reload tmux config if tmux is running
     if command -v tmux &> /dev/null && tmux info &> /dev/null 2>&1; then
@@ -71,6 +78,6 @@ echo -e "\n${GREEN}✓ Dotfiles installation complete!${NC}"
 echo -e "${BLUE}Note: Restart your terminal or run 'source ~/.zshrc' to apply changes${NC}"
 
 # Additional notes
-if [ -f "$DOTFILES_DIR/tmux/.tmux.conf" ]; then
+if [ -f "$DOTFILES_DIR/tmux/tmux.conf" ]; then
     echo -e "${BLUE}Tmux: Press prefix + I (capital i) inside tmux to install plugins${NC}"
 fi
