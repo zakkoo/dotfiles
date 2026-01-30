@@ -38,6 +38,7 @@ brew install font-hack-nerd-font \
   zsh-syntax-highlighting \
   eza \
   zoxide \
+  fzf \
   nvm git
 ```
 

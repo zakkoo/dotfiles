@@ -67,3 +67,10 @@ setopt hist_verify             # Show command with history expansion before runn
 # History search with arrow keys
 bindkey "^[[A" history-search-backward  # Up arrow
 bindkey "^[[B" history-search-forward   # Down arrow
+
+
+# ============================================================================
+# FUZZY FINDER FOR COMMAND LINE
+# ============================================================================
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
