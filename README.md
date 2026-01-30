@@ -85,13 +85,6 @@ git clone https://github.com/alacritty/alacritty-theme.git ~/.config/alacritty/t
 p10k configure
 ```
 
-The wizard creates `~/.p10k.zsh`. To track it in this repo, move it:
-
-```bash
-mv ~/.p10k.zsh ~/.dotfiles/zsh/.p10k.zsh
-ln -sf ~/.dotfiles/zsh/.p10k.zsh ~/.p10k.zsh
-```
-
 #### Tmux Plugin Installation
 
 Inside tmux, press: `prefix + I` (capital i) to install all plugins.

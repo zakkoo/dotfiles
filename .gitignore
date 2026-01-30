@@ -24,6 +24,7 @@ alacritty/themes/
 # Zsh
 zsh/.zcompdump*
 zsh/.zsh_history
+zsh/.p10k.zsh
 
 # Neovim
 nvim/plugin/
