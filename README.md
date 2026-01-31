@@ -98,6 +98,10 @@ Inside tmux, press: `prefix + I` (capital i) to install all plugins.
 
 Launch Neovim with `nvim`. On first launch, lazy.nvim will automatically bootstrap and install all plugins. Wait for completion and restart if needed.
 
+#### C# Debugging Setup (ARM64 Mac)
+
+C# debugging is automatically configured via the `netcoredbg-macOS-arm64.nvim` plugin, which provides native ARM64 support. No manual installation required - it will download on first Neovim launch.
+
 ## Updating
 
 Since configs are symlinked, just pull the latest changes:

@@ -12,27 +12,12 @@ return {
     local dap = require("dap")
     local dapui = require("dapui")
 
-    local function configure_adapter(adapter_name, setup_adapter)
-      local ok_registry, registry = pcall(require, "mason-registry")
-      if not ok_registry or not registry.has_package(adapter_name) then
-        return
-      end
-
-      local adapter = registry.get_package(adapter_name)
-      if adapter:is_installed() then
-        setup_adapter(adapter)
-        return
-      end
-
-      adapter:install()
-      adapter:once("install:success", function()
-        setup_adapter(adapter)
-      end)
-    end
+    -- Enable DAP logging for debugging
+    dap.set_log_level("DEBUG")
 
     require("mason-nvim-dap").setup({
-      ensure_installed = { "netcoredbg", "js-debug-adapter" },
-      automatic_setup = true,
+      ensure_installed = { "js-debug-adapter" },
+      automatic_setup = false,
     })
 
     dapui.setup()
@@ -49,54 +34,8 @@ return {
       dapui.close()
     end
 
-    -- C# debugging with netcoredbg.
-    dap.configurations.cs = {
-      {
-        type = "netcoredbg",
-        name = "Launch - netcoredbg",
-        request = "launch",
-        program = function()
-          return vim.fn.input("Path to dll: ", vim.fn.getcwd() .. "/bin/Debug/", "file")
-        end,
-      },
-    }
-
-    -- Node.js debugging for JS/TS.
-    configure_adapter("js-debug-adapter", function(js_debug_adapter)
-      if type(js_debug_adapter.get_install_path) ~= "function" then
-        return
-      end
-
-      local install_path = js_debug_adapter:get_install_path()
-      if install_path == nil or install_path == "" then
-        return
-      end
-
-      dap.adapters["pwa-node"] = {
-        type = "server",
-        host = "localhost",
-        port = "${port}",
-        executable = {
-          command = "node",
-          args = {
-            install_path .. "/js-debug/src/dapDebugServer.js",
-            "${port}",
-          },
-        },
-      }
-    end)
-
-    dap.configurations.javascript = {
-      {
-        type = "pwa-node",
-        request = "launch",
-        name = "Launch file",
-        program = "${file}",
-        cwd = "${workspaceFolder}",
-        sourceMaps = true,
-      },
-    }
-
-    dap.configurations.typescript = dap.configurations.javascript
+    -- Language-specific configurations loaded via separate plugin files
+    -- C# config is in dotnet-debug.lua
+    -- require("plugins.dap.javascript")  -- Disabled for now, only using C#
   end,
 }
