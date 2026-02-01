@@ -1,4 +1,4 @@
--- Statusline.
+-- Statusline plugin with nightfox theme
 
 return {
   "nvim-lualine/lualine.nvim",

@@ -1,4 +1,4 @@
--- File explorer.
+-- File explorer with icon support
 
 return {
   "nvim-tree/nvim-tree.lua",

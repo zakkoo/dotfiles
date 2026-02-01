@@ -1,4 +1,4 @@
--- Surround text objects.
+-- Surround text objects with pairs, tags, or custom delimiters
 
 return {
   "kylechui/nvim-surround",

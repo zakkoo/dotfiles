@@ -1,4 +1,4 @@
--- Comment toggling.
+-- Comment toggling for various filetypes
 
 return {
   "numToStr/Comment.nvim",
