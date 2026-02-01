@@ -9,6 +9,27 @@ return {
     -- This plugin provides netcoredbg with ARM64 support
     require("netcoredbg-macOS-arm64").setup(dap)
 
+    -- Helper function to build the C# project
+    local function build_project(clean)
+      if clean then
+        vim.notify("Cleaning and building C# project...", vim.log.levels.INFO)
+        vim.fn.system("dotnet clean")
+      else
+        vim.notify("Building C# project...", vim.log.levels.INFO)
+      end
+
+      local result = vim.fn.system("dotnet build")
+      local exit_code = vim.v.shell_error
+
+      if exit_code ~= 0 then
+        vim.notify("Build failed:\n" .. result, vim.log.levels.ERROR)
+        return false
+      end
+
+      vim.notify("Build successful!", vim.log.levels.INFO)
+      return true
+    end
+
     -- Helper function to find DLL files in bin directories
     local function find_dlls()
       local dlls = {}
@@ -90,6 +111,35 @@ return {
       {
         type = "coreclr",
         name = "Launch",
+        request = "launch",
+        program = function()
+          -- Build project before debugging
+          if not build_project() then
+            return nil
+          end
+          -- Wait a moment for filesystem to sync
+          vim.wait(500)
+          return pick_dll()
+        end,
+        cwd = vim.fn.getcwd(),
+      },
+      {
+        type = "coreclr",
+        name = "Launch (clean build)",
+        request = "launch",
+        program = function()
+          -- Clean and build project before debugging
+          if not build_project(true) then
+            return nil
+          end
+          vim.wait(500)
+          return pick_dll()
+        end,
+        cwd = vim.fn.getcwd(),
+      },
+      {
+        type = "coreclr",
+        name = "Launch (no build)",
         request = "launch",
         program = function()
           return pick_dll()
