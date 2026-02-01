@@ -42,7 +42,20 @@ return {
       },
       palettes = {},
       specs = {},
-      groups = {},
+      groups = {
+        all = {
+          -- Make variables pink
+          ["@variable"] = { fg = "palette.pink" },
+          ["@variable.builtin"] = { fg = "palette.magenta.bright" },
+          ["@variable.member"] = { fg = "palette.pink" },
+          ["@parameter"] = { fg = "palette.pink" },
+
+          -- LSP semantic tokens
+          ["@lsp.type.variable"] = { fg = "palette.pink" },
+          ["@lsp.type.parameter"] = { fg = "palette.pink" },
+          ["@lsp.type.property"] = { fg = "palette.magenta" },
+        },
+      },
     })
 
     vim.cmd("colorscheme carbonfox")
