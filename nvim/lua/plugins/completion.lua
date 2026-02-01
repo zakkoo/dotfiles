@@ -1,4 +1,4 @@
--- Completion engine.
+-- Completion engine with LSP and snippet support.
 
 return {
   "hrsh7th/nvim-cmp",

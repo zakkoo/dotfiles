@@ -1,4 +1,4 @@
--- Debug Adapter Protocol.
+-- Debug Adapter Protocol configuration.
 
 return {
   "mfussenegger/nvim-dap",
@@ -35,7 +35,7 @@ return {
     end
 
     -- Language-specific configurations loaded via separate plugin files
-    -- C# config is in dotnet-debug.lua
+    -- C# config is in dap-csharp.lua
     -- require("plugins.dap.javascript")  -- Disabled for now, only using C#
   end,
 }
