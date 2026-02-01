@@ -39,7 +39,8 @@ brew install font-hack-nerd-font \
   eza \
   zoxide \
   fzf \
-  nvm git
+  nvm \
+  git
 ```
 
 ### Step 2: Install Optional Dependencies
