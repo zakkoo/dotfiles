@@ -9,7 +9,7 @@ return {
   config = function()
     -- Mason LSP setup
     require("mason-lspconfig").setup({
-      ensure_installed = { "omnisharp", "ts_ls", "html", "cssls" },
+      ensure_installed = { "jsonls", "omnisharp", "ts_ls", "html", "cssls" },
     })
 
     -- LSP server configurations
@@ -23,8 +23,9 @@ return {
     vim.lsp.config("ts_ls", { capabilities = capabilities })
     vim.lsp.config("html", { capabilities = capabilities })
     vim.lsp.config("cssls", { capabilities = capabilities })
+    vim.lsp.config("jsonls", { capabilities = capabilities })
 
-    vim.lsp.enable({ "omnisharp", "ts_ls", "html", "cssls" })
+    vim.lsp.enable({"jsonls", "omnisharp", "ts_ls", "html", "cssls" })
 
     -- LSP document highlight autocmds
     local highlight_group = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true })
@@ -32,7 +33,13 @@ return {
     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
       group = highlight_group,
       callback = function()
-        vim.lsp.buf.document_highlight()
+        -- Only highlight if a server supports it
+        for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+          if client.server_capabilities.documentHighlightProvider then
+            vim.lsp.buf.document_highlight()
+            break
+          end
+        end
       end,
     })
 
