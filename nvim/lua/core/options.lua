@@ -17,7 +17,7 @@ opt.listchars = {
   nbsp = "␣",
 } -- Define whitespace symbols.
 opt.statuscolumn = "%s %=%{v:lnum}│%{v:relnum} " -- Show absolute + relative line numbers.
-opt.wrap = false -- Disable line wrapping.
+opt.wrap = true -- Line wrapping.
 opt.termguicolors = true -- Enable true color support.
 opt.signcolumn = "yes" -- Always show sign column.
 opt.cursorline = true -- Highlight the current line.
